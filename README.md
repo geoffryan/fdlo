@@ -55,26 +55,26 @@ This only took `189` evaluations, with potentially much larger error (although c
 
 EOS integrals currently included:
 
-    - `n_eminus`: Number density of electrons.
-    - `n_eplus`: Number density of positrons.
-    - `P_eminus`: Pressure of electrons.
-    - `P_eplus`: Pressure of positrons.
-    - `U_eminus`: Energy density of electrons.
-    - `U_eplus`: Energy density of positrons.
+- `n_eminus`: Number density of electrons.
+- `n_eplus`: Number density of positrons.
+- `P_eminus`: Pressure of electrons.
+- `P_eplus`: Pressure of positrons.
+- `U_eminus`: Energy density of electrons.
+- `U_eplus`: Energy density of positrons.
 
-Neutrino integrals in transparent limit currently included (*all use `eta_e`*):
+Neutrino integrals in transparent limit currently included (_all use `eta_e`_):
 
-    - `Ndot_nu_transp`: Number flux of neutrinos in transparent limit.
-    - `Ndot_nubar_transp`: Number flux of anti-neutrinos in transparent limit.
-    - `F_nu_transp`: Energy flux of neutrinos in transparent limit.
-    - `F_nubar_transp`: Energy flux of anti-neutrinos in transparent limit.
+- `Ndot_nu_transp`: Number flux of neutrinos in transparent limit.
+- `Ndot_nubar_transp`: Number flux of anti-neutrinos in transparent limit.
+- `F_nu_transp`: Energy flux of neutrinos in transparent limit.
+- `F_nubar_transp`: Energy flux of anti-neutrinos in transparent limit.
 
-Neutrino integrals in opaque limit currently included (*all use `eta_nu`*):
+Neutrino integrals in opaque limit currently included (_all use `eta_nu`_):
 
-    - `n_nu_opaque`: Number density of neutrinos in opaque limit.
-    - `n_nubar_opaque`: Number density of anti-neutrinos in opaque limit.
-    - `U_nu_opaque`: Energy density of neutrinos in opaque limit.
-    - `U_nubar_opaque`: Energy density of anti-neutrinos in opaque limit.
+- `n_nu_opaque`: Number density of neutrinos in opaque limit.
+- `n_nubar_opaque`: Number density of anti-neutrinos in opaque limit.
+- `U_nu_opaque`: Energy density of neutrinos in opaque limit.
+- `U_nubar_opaque`: Energy density of anti-neutrinos in opaque limit.
 
 #### More examples ####
 
