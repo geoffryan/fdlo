@@ -23,6 +23,7 @@ $ pip3 install -e .
 `fdlo` functions can be called with just a temperature θ (in electron masses) and degeneracy η (dimensionless).  Additional parameters are the desired relative tolerance `rtol` (defaults to 10<sup>-12</sup>) and integration routine `method` (defaults to `fdlo.gk1021`: adaptive quadrature with the Gauss-Kronrod 10-21 rule stencil).
 
 The functions return a tuple `(result, error, numEvals)`:
+ 
     - `result` is the desired value, a Fermi-dirac type integral
     - `error` is the (approximate) uncertainty in `result`
     - `numEvals` is the number of function evaluations used.
