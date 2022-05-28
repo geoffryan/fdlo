@@ -62,14 +62,14 @@ EOS integrals currently included:
 - `U_eminus`: Energy density of electrons.
 - `U_eplus`: Energy density of positrons.
 
-Neutrino integrals in transparent limit currently included (_all use `eta_e`_):
+Neutrino integrals in transparent limit currently included (*all use* `eta_e`):
 
 - `Ndot_nu_transp`: Number flux of neutrinos in transparent limit.
 - `Ndot_nubar_transp`: Number flux of anti-neutrinos in transparent limit.
 - `F_nu_transp`: Energy flux of neutrinos in transparent limit.
 - `F_nubar_transp`: Energy flux of anti-neutrinos in transparent limit.
 
-Neutrino integrals in opaque limit currently included (_all use `eta_nu`_):
+Neutrino integrals in opaque limit currently included (*all use* `eta_nu`):
 
 - `n_nu_opaque`: Number density of neutrinos in opaque limit.
 - `n_nubar_opaque`: Number density of anti-neutrinos in opaque limit.
