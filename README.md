@@ -24,9 +24,9 @@ $ pip3 install -e .
 
 The functions return a tuple `(result, error, numEvals)`:
  
-    - `result` is the desired value, a Fermi-dirac type integral
-    - `error` is the (approximate) uncertainty in `result`
-    - `numEvals` is the number of function evaluations used.
+- `result` is the desired value, a Fermi-dirac type integral
+- `error` is the (approximate) uncertainty in `result`
+- `numEvals` is the number of function evaluations used.
 
 Here's an example
 
