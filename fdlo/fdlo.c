@@ -137,6 +137,50 @@ double f_Ndot_nubar_transp(double t, void *vargs)
     return fd(EmQ, args[0], -args[1]) * EmQ*sqrt(EmQ*EmQ-1) * E*E * dE;
 }
 
+double f_n_nu_opaque(double t, void *vargs)
+{
+    double *args = (double *)vargs;
+
+    double iomt = 1.0 / (1.0 - t);
+    double E = t * iomt;
+    double dE = iomt * iomt;
+
+    return fd(E, args[0], args[1]) * E*E * dE;
+}
+
+double f_n_nubar_opaque(double t, void *vargs)
+{
+    double *args = (double *)vargs;
+
+    double iomt = 1.0 / (1.0 - t);
+    double E = t * iomt;
+    double dE = iomt * iomt;
+
+    return fd(E, args[0], -args[1]) * E*E * dE;
+}
+
+double f_U_nu_opaque(double t, void *vargs)
+{
+    double *args = (double *)vargs;
+
+    double iomt = 1.0 / (1.0 - t);
+    double E = t * iomt;
+    double dE = iomt * iomt;
+
+    return fd(E, args[0], args[1]) * E*E*E * dE;
+}
+
+double f_U_nubar_opaque(double t, void *vargs)
+{
+    double *args = (double *)vargs;
+
+    double iomt = 1.0 / (1.0 - t);
+    double E = t * iomt;
+    double dE = iomt * iomt;
+
+    return fd(E, args[0], -args[1]) * E*E*E * dE;
+}
+
 double dispatch(double (*f)(double, void *), double *args, double fb,
                 double rtol, int *Neval, double *err, int method)
 {
@@ -228,3 +272,32 @@ double F_nubar_transp(double theta, double eta_e, double rtol, int *Neval,
     double args[2] = {theta, eta_e};
     return dispatch(f_F_nubar_transp, args, 0.0, rtol, Neval, err, method);
 }
+
+double n_nu_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                   double *err, int method)
+{
+    double args[2] = {theta, eta_nu};
+    return dispatch(f_n_nu_opaque, args, 0.0, rtol, Neval, err, method);
+}
+
+double n_nubar_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                      double *err, int method)
+{
+    double args[2] = {theta, eta_nu};
+    return dispatch(f_n_nubar_opaque, args, 0.0, rtol, Neval, err, method);
+}
+
+double U_nu_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                   double *err, int method)
+{
+    double args[2] = {theta, eta_nu};
+    return dispatch(f_U_nu_opaque, args, 0.0, rtol, Neval, err, method);
+}
+
+double U_nubar_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                      double *err, int method)
+{
+    double args[2] = {theta, eta_nu};
+    return dispatch(f_U_nubar_opaque, args, 0.0, rtol, Neval, err, method);
+}
+

@@ -27,6 +27,38 @@ static char U_eminus_docstring[] =
 static char U_eplus_docstring[] = 
     "Internal energy of a positron gas at given temperature and degeneracy.";
 
+static char Ndot_nu_transp_docstring[] = 
+    "Neutrino number flux in transparent regime given temperature and "
+    "electron degeneracy";
+
+static char Ndot_nubar_transp_docstring[] = 
+    "Anti-neutrino number flux in transparent regime given temperature and "
+    "electron degeneracy";
+
+static char F_nu_transp_docstring[] = 
+    "Neutrino energy flux in transparent regime given temperature and "
+    "electron degeneracy";
+
+static char F_nubar_transp_docstring[] = 
+    "Anti-neutrino energy flux in transparent regime given temperature and "
+    "electron degeneracy";
+
+static char n_nu_opaque_docstring[] = 
+    "Neutrino number density in opaque regime given temperature and "
+    "neutrino degeneracy";
+
+static char n_nubar_opaque_docstring[] = 
+    "Anti-neutrino number density in opaque regime given temperature and "
+    "neutrino degeneracy";
+
+static char U_nu_opaque_docstring[] = 
+    "Neutrino energy density in opaque regime given temperature and "
+    "neutrino degeneracy";
+
+static char U_nubar_opaque_docstring[] = 
+    "Anti-neutrino energy density in opaque regime given temperature and "
+    "neutrino degeneracy";
+
 
 static PyObject *fdloCore_n_eminus(PyObject *self, PyObject *args,
                                PyObject *kwargs);
@@ -40,6 +72,22 @@ static PyObject *fdloCore_U_eminus(PyObject *self, PyObject *args,
                                PyObject *kwargs);
 static PyObject *fdloCore_U_eplus(PyObject *self, PyObject *args,
                                PyObject *kwargs);
+static PyObject *fdloCore_Ndot_nu_transp(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
+static PyObject *fdloCore_Ndot_nubar_transp(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
+static PyObject *fdloCore_F_nu_transp(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
+static PyObject *fdloCore_F_nubar_transp(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
+static PyObject *fdloCore_n_nu_opaque(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
+static PyObject *fdloCore_n_nubar_opaque(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
+static PyObject *fdloCore_U_nu_opaque(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
+static PyObject *fdloCore_U_nubar_opaque(PyObject *self, PyObject *args,
+                                         PyObject *kwargs);
 
 static PyMethodDef fdloMethods[] = {
     {"n_eminus", (PyCFunction)fdloCore_n_eminus, METH_VARARGS|METH_KEYWORDS,
@@ -54,6 +102,22 @@ static PyMethodDef fdloMethods[] = {
         U_eminus_docstring},
     {"U_eplus", (PyCFunction)fdloCore_U_eplus, METH_VARARGS|METH_KEYWORDS,
         U_eplus_docstring},
+    {"Ndot_nu_transp", (PyCFunction)fdloCore_Ndot_nu_transp, 
+        METH_VARARGS|METH_KEYWORDS, Ndot_nu_transp_docstring},
+    {"Ndot_nubar_transp", (PyCFunction)fdloCore_Ndot_nubar_transp, 
+        METH_VARARGS|METH_KEYWORDS, Ndot_nubar_transp_docstring},
+    {"F_nu_transp", (PyCFunction)fdloCore_F_nu_transp, 
+        METH_VARARGS|METH_KEYWORDS, F_nu_transp_docstring},
+    {"F_nubar_transp", (PyCFunction)fdloCore_F_nubar_transp, 
+        METH_VARARGS|METH_KEYWORDS, F_nubar_transp_docstring},
+    {"n_nu_opaque", (PyCFunction)fdloCore_n_nu_opaque, 
+        METH_VARARGS|METH_KEYWORDS, n_nu_opaque_docstring},
+    {"n_nubar_opaque", (PyCFunction)fdloCore_n_nubar_opaque, 
+        METH_VARARGS|METH_KEYWORDS, n_nubar_opaque_docstring},
+    {"U_nu_opaque", (PyCFunction)fdloCore_U_nu_opaque, 
+        METH_VARARGS|METH_KEYWORDS, U_nu_opaque_docstring},
+    {"U_nubar_opaque", (PyCFunction)fdloCore_U_nubar_opaque, 
+        METH_VARARGS|METH_KEYWORDS, U_nubar_opaque_docstring},
     {NULL, NULL, 0, NULL}};
 
 static struct PyModuleDef fdloModule = {
@@ -232,6 +296,174 @@ static PyObject *fdloCore_U_eplus(PyObject *self, PyObject *args,
     int Neval;
     double err;
     double f = U_eplus(theta, eta_e, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_Ndot_nu_transp(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_e;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_e, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = Ndot_nu_transp(theta, eta_e, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_Ndot_nubar_transp(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_e;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_e, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = Ndot_nubar_transp(theta, eta_e, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_F_nu_transp(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_e;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_e, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = F_nu_transp(theta, eta_e, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_F_nubar_transp(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_e;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_e, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = F_nubar_transp(theta, eta_e, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_n_nu_opaque(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_nu;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_nu, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = n_nu_opaque(theta, eta_nu, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_n_nubar_opaque(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_nu;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_nu, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = n_nubar_opaque(theta, eta_nu, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_U_nu_opaque(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_nu;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_nu, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = U_nu_opaque(theta, eta_nu, rtol, &Neval, &err, method);
+    
+    PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
+
+    return ret;
+}
+
+static PyObject *fdloCore_U_nubar_opaque(PyObject *self, PyObject *args,
+                                        PyObject *kwargs)
+{
+    double theta;
+    double eta_nu;
+    double rtol = rtol_default;
+    int method = method_default;
+
+    int status = parseArgs(args, kwargs, &theta, &eta_nu, &rtol, &method);
+    if(!status)
+        return NULL;
+
+    int Neval;
+    double err;
+    double f = U_nubar_opaque(theta, eta_nu, rtol, &Neval, &err, method);
     
     PyObject *ret = Py_BuildValue("ddi", f, err, Neval);
 

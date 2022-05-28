@@ -42,5 +42,14 @@ double F_nu_transp(double theta, double eta_e, double rtol, int *Neval,
                   double *err, int method);
 double F_nubar_transp(double theta, double eta_e, double rtol, int *Neval,
                   double *err, int method);
+double n_nu_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                  double *err, int method);
+double n_nubar_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                  double *err, int method);
+double U_nu_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                  double *err, int method);
+double U_nubar_opaque(double theta, double eta_nu, double rtol, int *Neval,
+                  double *err, int method);
+
 
 #endif
