@@ -1,0 +1,17 @@
+.DS_Store
+scratch/
+build/
+*.png
+*.txt
+*.swp
+*.so
+*.egg-info
+fdlo/__pycache__
+a.out
+convTest
+fdTest
+Makefile
+test.c
+otherTest.c
+plotConvTest.py
+plotFDTest.py
